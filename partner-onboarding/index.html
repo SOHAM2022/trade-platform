@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Partner Onboarding | Real Amount</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- ───── HEADER ───── -->
+        <header class="site-header">
+            <div class="header-inner">
+                <img src="assets/logo.png" alt="Real Amount" class="logo" />
+                <div class="header-contact">
+                    <a href="tel:+917009095598" class="contact-item">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                            />
+                        </svg>
+                        +91 7009095598
+                    </a>
+                    <a
+                        href="mailto:realamountofficial@gmail.com"
+                        class="contact-item"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                            />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        realamountofficial@gmail.com
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- ───── MAIN ───── -->
+        <main class="main-container">
+            <!-- Progress Indicator -->
+            <div class="progress-wrapper" id="progress-wrapper">
+                <div class="progress-track">
+                    <div class="progress-step" id="prog-step-1">
+                        <div class="step-circle active" id="prog-circle-1">
+                            1
+                        </div>
+                        <span class="step-label">Basic Info</span>
+                    </div>
+                    <div class="progress-line" id="prog-line"></div>
+                    <div class="progress-step" id="prog-step-2">
+                        <div class="step-circle" id="prog-circle-2">2</div>
+                        <span class="step-label">Business Details</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Title -->
+            <div class="form-title-block">
+                <h1>Partner Onboarding Form</h1>
+                <p>
+                    Join the Real Amount network — fill in your details below.
+                </p>
+            </div>
+
+            <!-- ── STEP 1: Basic Info ── -->
+            <div class="form-card" id="step-1">
+                <div class="card-header">
+                    <span class="card-badge">Step 1 of 2</span>
+                    <h2>Business Information</h2>
+                    <p class="required-note">
+                        <span class="asterisk">*</span> indicates required field
+                    </p>
+                </div>
+
+                <div class="fields-grid">
+                    <!-- Email -->
+                    <div class="form-group full-width">
+                        <label for="email"
+                            >Email <span class="asterisk">*</span></label
+                        >
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="your@email.com"
+                            autocomplete="email"
+                        />
+                        <span
+                            class="field-error hidden"
+                            id="email-error"
+                        ></span>
+                    </div>
+
+                    <!-- Business Name -->
+                    <div class="form-group full-width">
+                        <label for="businessName"
+                            >Business Name
+                            <span class="asterisk">*</span></label
+                        >
+                        <input
+                            type="text"
+                            id="businessName"
+                            name="businessName"
+                            placeholder="Enter your business name"
+                        />
+                        <span
+                            class="field-error hidden"
+                            id="businessName-error"
+                        ></span>
+                    </div>
+
+                    <!-- Workplace Address -->
+                    <div class="form-group full-width">
+                        <label for="workplaceAddress"
+                            >Workplace Address
+                            <span class="asterisk">*</span></label
+                        >
+                        <textarea
+                            id="workplaceAddress"
+                            name="workplaceAddress"
+                            placeholder="Full address of your workplace"
+                            rows="3"
+                        ></textarea>
+                        <span
+                            class="field-error hidden"
+                            id="workplaceAddress-error"
+                        ></span>
+                    </div>
+
+                    <!-- GST Number -->
+                    <div class="form-group">
+                        <label for="gstNumber">GST Number</label>
+                        <input
+                            type="text"
+                            id="gstNumber"
+                            name="gstNumber"
+                            placeholder="Optional"
+                            maxlength="15"
+                            style="text-transform: uppercase"
+                        />
+                    </div>
+
+                    <!-- Contact Person -->
+                    <div class="form-group">
+                        <label for="contactPerson"
+                            >Contact Person Name
+                            <span class="asterisk">*</span></label
+                        >
+                        <input
+                            type="text"
+                            id="contactPerson"
+                            name="contactPerson"
+                            placeholder="Full name"
+                        />
+                        <span
+                            class="field-error hidden"
+                            id="contactPerson-error"
+                        ></span>
+                    </div>
+
+                    <!-- Mobile Number -->
+                    <div class="form-group">
+                        <label for="mobile"
+                            >Mobile Number
+                            <span class="asterisk">*</span></label
+                        >
+                        <div class="input-with-prefix">
+                            <span class="input-prefix">+91</span>
+                            <input
+                                type="tel"
+                                id="mobile"
+                                name="mobile"
+                                placeholder="10-digit number"
+                                maxlength="10"
+                                inputmode="numeric"
+                            />
+                        </div>
+                        <span
+                            class="field-error hidden"
+                            id="mobile-error"
+                        ></span>
+                    </div>
+
+                    <!-- Business Type -->
+                    <div class="form-group full-width">
+                        <label
+                            >Choose your business type
+                            <span class="asterisk">*</span></label
+                        >
+                        <div class="radio-group">
+                            <label class="radio-card" id="radio-card-product">
+                                <input
+                                    type="radio"
+                                    name="businessType"
+                                    value="Product Sale (Retail)"
+                                    id="bt-product"
+                                />
+                                <div class="radio-card-inner">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
+                                        />
+                                        <line x1="3" y1="6" x2="21" y2="6" />
+                                        <path d="M16 10a4 4 0 0 1-8 0" />
+                                    </svg>
+                                    <span class="radio-title"
+                                        >Product Sale (Retail)</span
+                                    >
+                                    <span class="radio-desc"
+                                        >Sell physical products to
+                                        customers</span
+                                    >
+                                </div>
+                            </label>
+                            <label class="radio-card" id="radio-card-service">
+                                <input
+                                    type="radio"
+                                    name="businessType"
+                                    value="Service Provider"
+                                    id="bt-service"
+                                />
+                                <div class="radio-card-inner">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                                        />
+                                    </svg>
+                                    <span class="radio-title"
+                                        >Service Provider</span
+                                    >
+                                    <span class="radio-desc"
+                                        >Offer services or repairs to
+                                        customers</span
+                                    >
+                                </div>
+                            </label>
+                        </div>
+                        <span
+                            class="field-error hidden"
+                            id="businessType-error"
+                        ></span>
+                    </div>
+                </div>
+                <!-- /fields-grid -->
+
+                <div class="btn-row">
+                    <div></div>
+                    <button class="btn btn-primary" onclick="goToStep2()">
+                        Next Step
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                        >
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- /step-1 -->
+
+            <!-- ── STEP 2A: Product Sale (Retail) ── -->
+            <div class="form-card hidden" id="step-2a">
+                <div class="card-header">
+                    <span class="card-badge product-badge"
+                        >Product Sale (Retail)</span
+                    >
+                    <h2>What products do you sell?</h2>
+                    <p class="required-note">
+                        Select all that apply <span class="asterisk">*</span>
+                    </p>
+                </div>
+
+                <div class="checkbox-grid" id="product-checkbox-grid">
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Air Conditioner"
+                        /><span class="checkbox-box"></span>Air
+                        Conditioner</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Refrigerator"
+                        /><span class="checkbox-box"></span>Refrigerator</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Led Tv"
+                        /><span class="checkbox-box"></span>Led Tv</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="RO"
+                        /><span class="checkbox-box"></span>RO</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Inverter"
+                        /><span class="checkbox-box"></span>Inverter</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Oven/OTG/Induction"
+                        /><span class="checkbox-box"></span
+                        >Oven/OTG/Induction</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Cooler"
+                        /><span class="checkbox-box"></span>Cooler</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Washing Machine"
+                        /><span class="checkbox-box"></span>Washing
+                        Machine</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Mobile"
+                        /><span class="checkbox-box"></span>Mobile</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Books and Stationary"
+                        /><span class="checkbox-box"></span>Books and
+                        Stationary</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Kitchen Appliances"
+                        /><span class="checkbox-box"></span>Kitchen
+                        Appliances</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Plywood and Hardware"
+                        /><span class="checkbox-box"></span>Plywood and
+                        Hardware</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Automotive"
+                        /><span class="checkbox-box"></span>Automotive</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Furniture"
+                        /><span class="checkbox-box"></span>Furniture</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Gift Shop"
+                        /><span class="checkbox-box"></span>Gift Shop</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Footwear"
+                        /><span class="checkbox-box"></span>Footwear</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Chemist"
+                        /><span class="checkbox-box"></span>Chemist</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Building Material"
+                        /><span class="checkbox-box"></span>Building
+                        Material</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Agricultural Goods"
+                        /><span class="checkbox-box"></span>Agricultural
+                        Goods</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Sweet Shop"
+                        /><span class="checkbox-box"></span>Sweet Shop</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Sanitary Store"
+                        /><span class="checkbox-box"></span>Sanitary
+                        Store</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Home Baker"
+                        /><span class="checkbox-box"></span>Home Baker</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Hardware and Tools"
+                        /><span class="checkbox-box"></span>Hardware and
+                        Tools</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Toys/Games"
+                        /><span class="checkbox-box"></span>Toys/Games</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Flowers and Gifts"
+                        /><span class="checkbox-box"></span>Flowers and
+                        Gifts</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Boutique"
+                        /><span class="checkbox-box"></span>Boutique</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Home Decor"
+                        /><span class="checkbox-box"></span>Home Decor</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Opticals"
+                        /><span class="checkbox-box"></span>Opticals</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Grocery Store"
+                        /><span class="checkbox-box"></span>Grocery Store</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="Spare Parts"
+                        /><span class="checkbox-box"></span>Spare Parts</label
+                    >
+                    <label class="checkbox-item none-item"
+                        ><input
+                            type="checkbox"
+                            name="products"
+                            value="None of the above"
+                            id="product-none"
+                        /><span class="checkbox-box"></span>None of the
+                        above</label
+                    >
+                    <label class="checkbox-item other-item">
+                        <input
+                            type="checkbox"
+                            name="products"
+                            value="Other"
+                            id="product-other"
+                        />
+                        <span class="checkbox-box"></span>Other
+                    </label>
+                </div>
+                <div class="other-input-wrap hidden" id="product-other-wrap">
+                    <input
+                        type="text"
+                        id="product-other-input"
+                        class="other-input"
+                        placeholder="Please specify..."
+                    />
+                </div>
+                <span class="field-error hidden" id="products-error"></span>
+
+                <!-- Brands -->
+                <div class="form-group" style="margin-top: 1.5rem">
+                    <label for="brands"
+                        >Please mention the brands you deal in</label
+                    >
+                    <input
+                        type="text"
+                        id="brands"
+                        name="brands"
+                        placeholder="e.g. Samsung, LG, Sony..."
+                    />
+                </div>
+
+                <!-- File Upload -->
+                <div class="form-group" style="margin-top: 1.5rem">
+                    <label>Upload Business / Visiting Card</label>
+                    <div
+                        class="upload-zone"
+                        id="product-upload-zone"
+                        onclick="
+                            document
+                                .getElementById('product-file-input')
+                                .click()
+                        "
+                    >
+                        <input
+                            type="file"
+                            id="product-file-input"
+                            accept=".pdf,image/*"
+                            style="display: none"
+                            onchange="
+                                handleFileSelect(this, 'product-upload-zone')
+                            "
+                        />
+                        <div
+                            class="upload-placeholder"
+                            id="product-upload-placeholder"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            >
+                                <path
+                                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                                />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                            <p class="upload-main-text">
+                                Click to upload or drag &amp; drop
+                            </p>
+                            <p class="upload-sub-text">
+                                PDF or image &bull; Max 2 MB
+                            </p>
+                        </div>
+                        <div
+                            class="upload-preview hidden"
+                            id="product-upload-preview"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            >
+                                <path
+                                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            <div>
+                                <p class="file-name" id="product-file-name"></p>
+                                <p class="file-size" id="product-file-size"></p>
+                            </div>
+                            <button
+                                type="button"
+                                class="remove-file"
+                                onclick="
+                                    removeFile(
+                                        'product-upload-zone',
+                                        'product-file-input',
+                                        event,
+                                    )
+                                "
+                            >
+                                &#x2715;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-row">
+                    <button class="btn btn-outline" onclick="goBack()">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                        >
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                        Back
+                    </button>
+                    <button
+                        class="btn btn-primary"
+                        id="product-submit-btn"
+                        onclick="submitForm()"
+                    >
+                        Submit Form
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                        >
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- /step-2a -->
+
+            <!-- ── STEP 2B: Service Provider ── -->
+            <div class="form-card hidden" id="step-2b">
+                <div class="card-header">
+                    <span class="card-badge service-badge"
+                        >Service Provider</span
+                    >
+                    <h2>Select Your Services</h2>
+                    <p class="required-note">
+                        Select all that apply <span class="asterisk">*</span>
+                    </p>
+                </div>
+
+                <div class="checkbox-grid" id="service-checkbox-grid">
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Ac Service/Repair"
+                        /><span class="checkbox-box"></span>Ac
+                        Service/Repair</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Refrigerator Repair"
+                        /><span class="checkbox-box"></span>Refrigerator
+                        Repair</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Tv/Led Repair"
+                        /><span class="checkbox-box"></span>Tv/Led Repair</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Mobile Repair"
+                        /><span class="checkbox-box"></span>Mobile Repair</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Laptop Repair"
+                        /><span class="checkbox-box"></span>Laptop Repair</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Plumber"
+                        /><span class="checkbox-box"></span>Plumber</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="IELETS/Coaching Centre"
+                        /><span class="checkbox-box"></span>IELETS/Coaching
+                        Centre</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Investment"
+                        /><span class="checkbox-box"></span>Investment</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Auto Dealer"
+                        /><span class="checkbox-box"></span>Auto Dealer</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Electrician"
+                        /><span class="checkbox-box"></span>Electrician</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Carpenter"
+                        /><span class="checkbox-box"></span>Carpenter</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Education"
+                        /><span class="checkbox-box"></span>Education</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Health Care"
+                        /><span class="checkbox-box"></span>Health Care</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Taxi/Cab Services"
+                        /><span class="checkbox-box"></span>Taxi/Cab
+                        Services</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Financial Services"
+                        /><span class="checkbox-box"></span>Financial
+                        Services</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Event Management"
+                        /><span class="checkbox-box"></span>Event
+                        Management</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Catering"
+                        /><span class="checkbox-box"></span>Catering</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Car Washing"
+                        /><span class="checkbox-box"></span>Car Washing</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Photographer"
+                        /><span class="checkbox-box"></span>Photographer</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Courier Services"
+                        /><span class="checkbox-box"></span>Courier
+                        Services</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Banquet Hall"
+                        /><span class="checkbox-box"></span>Banquet Hall</label
+                    >
+                    <label class="checkbox-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="Real Estate"
+                        /><span class="checkbox-box"></span>Real Estate</label
+                    >
+                    <label class="checkbox-item none-item"
+                        ><input
+                            type="checkbox"
+                            name="services"
+                            value="None of the above"
+                            id="service-none"
+                        /><span class="checkbox-box"></span>None of the
+                        above</label
+                    >
+                    <label class="checkbox-item other-item">
+                        <input
+                            type="checkbox"
+                            name="services"
+                            value="Other"
+                            id="service-other"
+                        />
+                        <span class="checkbox-box"></span>Other
+                    </label>
+                </div>
+                <div class="other-input-wrap hidden" id="service-other-wrap">
+                    <input
+                        type="text"
+                        id="service-other-input"
+                        class="other-input"
+                        placeholder="Please specify..."
+                    />
+                </div>
+                <span class="field-error hidden" id="services-error"></span>
+
+                <!-- File Upload -->
+                <div class="form-group" style="margin-top: 1.5rem">
+                    <label>Upload Business / Visiting Card</label>
+                    <div
+                        class="upload-zone"
+                        id="service-upload-zone"
+                        onclick="
+                            document
+                                .getElementById('service-file-input')
+                                .click()
+                        "
+                    >
+                        <input
+                            type="file"
+                            id="service-file-input"
+                            accept=".pdf,image/*"
+                            style="display: none"
+                            onchange="
+                                handleFileSelect(this, 'service-upload-zone')
+                            "
+                        />
+                        <div
+                            class="upload-placeholder"
+                            id="service-upload-placeholder"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            >
+                                <path
+                                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                                />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                            <p class="upload-main-text">
+                                Click to upload or drag &amp; drop
+                            </p>
+                            <p class="upload-sub-text">
+                                PDF or image &bull; Max 2 MB
+                            </p>
+                        </div>
+                        <div
+                            class="upload-preview hidden"
+                            id="service-upload-preview"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            >
+                                <path
+                                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            <div>
+                                <p class="file-name" id="service-file-name"></p>
+                                <p class="file-size" id="service-file-size"></p>
+                            </div>
+                            <button
+                                type="button"
+                                class="remove-file"
+                                onclick="
+                                    removeFile(
+                                        'service-upload-zone',
+                                        'service-file-input',
+                                        event,
+                                    )
+                                "
+                            >
+                                &#x2715;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-row">
+                    <button class="btn btn-outline" onclick="goBack()">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                        >
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                        Back
+                    </button>
+                    <button
+                        class="btn btn-primary"
+                        id="service-submit-btn"
+                        onclick="submitForm()"
+                    >
+                        Submit Form
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                        >
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- /step-2b -->
+
+            <!-- ── SUCCESS SCREEN ── -->
+            <div class="success-screen hidden" id="success-screen">
+                <div class="success-icon">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                </div>
+                <h2>Application Submitted!</h2>
+                <p>
+                    Thank you for applying to the Real Amount partner network.
+                    Our team will review your application and get in touch with
+                    you shortly.
+                </p>
+
+                <!-- Reference ID Box -->
+                <div class="ref-id-box">
+                    <p class="ref-id-label">Your Reference ID</p>
+                    <p class="ref-id-value" id="ref-id-display">&mdash;</p>
+                    <button
+                        type="button"
+                        class="copy-btn"
+                        onclick="copyRefId()"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <rect
+                                x="9"
+                                y="9"
+                                width="13"
+                                height="13"
+                                rx="2"
+                                ry="2"
+                            />
+                            <path
+                                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                            />
+                        </svg>
+                        Copy ID
+                    </button>
+                    <p class="ref-id-hint">
+                        Save this ID for future correspondence with Real Amount
+                    </p>
+                </div>
+
+                <div class="success-meta" id="success-meta"></div>
+                <button
+                    class="btn btn-primary"
+                    onclick="resetForm()"
+                    style="margin-top: 1.5rem"
+                >
+                    Submit Another Response
+                </button>
+            </div>
+        </main>
+
+        <!-- Toast notification -->
+        <div class="toast hidden" id="toast"></div>
+
+        <footer class="site-footer">
+            <p>
+                &copy; 2024 Real Amount &bull; Stable Growth | Financial Trust
+            </p>
+        </footer>
+
+        <script src="form.js"></script>
+    </body>
+</html>
