@@ -550,6 +550,12 @@ textarea {
     padding: 1.5rem 1.75rem 0;
 }
 
+/* Padded wrapper for content outside .fields-grid (brands, uploads, etc.) */
+.card-section {
+    padding: 1.25rem 1.75rem 0;
+}
+
+
 .checkbox-item {
     display: flex;
     align-items: center;
@@ -1000,6 +1006,47 @@ textarea {
 }
 
 /* ═══════════════════════════════
+   PAYMENT BOX
+═══════════════════════════════ */
+.payment-box {
+    background: linear-gradient(135deg, #fdf8ec 0%, #fffdf5 100%);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+}
+
+.payment-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 0.35rem;
+}
+
+.payment-upi {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+}
+
+.payment-upi strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.payment-qr {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    margin: 0 auto;
+    display: block;
+    border: 1px solid var(--border);
+    padding: 0.5rem;
+    background: #fff;
+}
+
+/* ═══════════════════════════════
    FOOTER
 ═══════════════════════════════ */
 .site-footer {
@@ -1063,6 +1110,10 @@ textarea {
 
     .other-input-wrap {
         padding: 0.6rem 1.25rem 0;
+    }
+
+    .card-section {
+        padding: 1rem 1.25rem 0;
     }
 
     .btn-row {
