@@ -21,39 +21,39 @@
 // Get it from the Sheet URL:
 // https://docs.google.com/spreadsheets/d/SHEET_ID_IS_HERE/edit
 
-const SPREADSHEET_ID = '1bIO2okfM-wZNqWJtmQia2MyYv0BRPik6bLhESBC_DJI';
+const SPREADSHEET_ID = "1bIO2okfM-wZNqWJtmQia2MyYv0BRPik6bLhESBC_DJI";
 
-const PARTNER_SHEET_NAME  = 'Partner Submissions';
-const CUSTOMER_SHEET_NAME = 'Customer Submissions';
-const FOLDER_NAME         = 'Real Amount — Uploads';
+const PARTNER_SHEET_NAME = "Partner Submissions";
+const CUSTOMER_SHEET_NAME = "Customer Submissions";
+const FOLDER_NAME = "Real Amount — Uploads";
 
 // ── Column headers ──────────────────────────────────
 const PARTNER_HEADERS = [
-  'Timestamp',
-  'Reference ID',
-  'Email',
-  'Business Name',
-  'Workplace Address',
-  'GST Number',
-  'Contact Person',
-  'Mobile Number',
-  'Business Type',
-  'Products / Services',
-  'Brands Dealt In',
-  'Visiting Card URL',
+  "Timestamp",
+  "Reference ID",
+  "Email",
+  "Business Name",
+  "Workplace Address",
+  "GST Number",
+  "Contact Person",
+  "Mobile Number",
+  "Business Type",
+  "Products / Services",
+  "Brands Dealt In",
+  "Visiting Card URL",
 ];
 
 const CUSTOMER_HEADERS = [
-  'Timestamp',
-  'Reference ID',
-  'Account Type',
-  'Customer Name',
-  'Mobile Number',
-  'Address',
-  'Service Requested',
-  'Items / Category',
-  'Brands (if any)',
-  'Payment Screenshot URL',
+  "Timestamp",
+  "Reference ID",
+  "Account Type",
+  "Customer Name",
+  "Mobile Number",
+  "Address",
+  "Service Requested",
+  "Items / Category",
+  "Brands (if any)",
+  "Payment Screenshot URL",
 ];
 
 // ════════════════════════════════════════════════════
@@ -62,16 +62,15 @@ const CUSTOMER_HEADERS = [
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-    const accountType = (data.accountType || '').trim();
+    const accountType = (data.accountType || "").trim();
 
-    if (accountType === 'Customer') {
+    if (accountType === "Customer") {
       return handleCustomerSubmission(data);
     } else {
       return handlePartnerSubmission(data);
     }
-
   } catch (err) {
-    console.error('doPost error:', err.message);
+    console.error("doPost error:", err.message);
     return jsonResponse({ success: false, error: err.message });
   }
 }
@@ -80,8 +79,8 @@ function doPost(e) {
 // PARTNER submission handler
 // ════════════════════════════════════════════════════
 function handlePartnerSubmission(data) {
-  const ss    = SpreadsheetApp.openById(SPREADSHEET_ID);
-  let   sheet = ss.getSheetByName(PARTNER_SHEET_NAME);
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  let sheet = ss.getSheetByName(PARTNER_SHEET_NAME);
 
   if (!sheet) {
     sheet = ss.insertSheet(PARTNER_SHEET_NAME);
@@ -92,9 +91,9 @@ function handlePartnerSubmission(data) {
   }
 
   // ── Handle file upload ──────────────────────────
-  let fileUrl = '';
+  let fileUrl = "";
   if (data.fileData && data.fileName) {
-    fileUrl = uploadFileToDrive(data, 'partner_' + (data.referenceId || ''));
+    fileUrl = uploadFileToDrive(data, "partner_" + (data.referenceId || ""));
   }
 
   const referenceId = data.referenceId || getNextReferenceId(sheet);
@@ -102,17 +101,17 @@ function handlePartnerSubmission(data) {
   const row = [
     new Date(),
     referenceId,
-    data.email                || '',
-    data.businessName         || '',
-    data.workplaceAddress     || '',
-    data.gstNumber            || '',
-    data.contactPerson        || '',
-    data.mobileNumber         || '',
-    data.businessType         || '',
+    data.email || "",
+    data.businessName || "",
+    data.workplaceAddress || "",
+    data.gstNumber || "",
+    data.contactPerson || "",
+    data.mobileNumber || "",
+    data.businessType || "",
     Array.isArray(data.selectedItems)
-      ? data.selectedItems.join(', ')
-      : (data.selectedItems || ''),
-    data.brands               || '',
+      ? data.selectedItems.join(", ")
+      : data.selectedItems || "",
+    data.brands || "",
     fileUrl,
   ];
 
@@ -126,8 +125,8 @@ function handlePartnerSubmission(data) {
 // CUSTOMER submission handler
 // ════════════════════════════════════════════════════
 function handleCustomerSubmission(data) {
-  const ss    = SpreadsheetApp.openById(SPREADSHEET_ID);
-  let   sheet = ss.getSheetByName(CUSTOMER_SHEET_NAME);
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  let sheet = ss.getSheetByName(CUSTOMER_SHEET_NAME);
 
   if (!sheet) {
     sheet = ss.insertSheet(CUSTOMER_SHEET_NAME);
@@ -138,9 +137,9 @@ function handleCustomerSubmission(data) {
   }
 
   // ── Handle payment screenshot upload ───────────
-  let fileUrl = '';
+  let fileUrl = "";
   if (data.fileData && data.fileName) {
-    fileUrl = uploadFileToDrive(data, 'payment_' + (data.referenceId || ''));
+    fileUrl = uploadFileToDrive(data, "payment_" + (data.referenceId || ""));
   }
 
   const referenceId = data.referenceId || getNextReferenceId(sheet);
@@ -148,15 +147,15 @@ function handleCustomerSubmission(data) {
   const row = [
     new Date(),
     referenceId,
-    'Customer',
-    data.customerName         || '',
-    data.customerMobile       || '',
-    data.customerAddress      || '',
-    data.customerService      || '',
+    "Customer",
+    data.customerName || "",
+    data.customerMobile || "",
+    data.customerAddress || "",
+    data.customerService || "",
     Array.isArray(data.selectedItems)
-      ? data.selectedItems.join(', ')
-      : (data.selectedItems || ''),
-    data.brands               || '',
+      ? data.selectedItems.join(", ")
+      : data.selectedItems || "",
+    data.brands || "",
     fileUrl,
   ];
 
@@ -172,61 +171,64 @@ function handleCustomerSubmission(data) {
 
 function appendHeaderRow(sheet, headers) {
   sheet.appendRow(headers);
-  sheet.getRange(1, 1, 1, headers.length)
-    .setFontWeight('bold')
-    .setBackground('#1a3c5e')
-    .setFontColor('#ffffff');
+  sheet
+    .getRange(1, 1, 1, headers.length)
+    .setFontWeight("bold")
+    .setBackground("#1a3c5e")
+    .setFontColor("#ffffff");
   sheet.setFrozenRows(1);
 }
 
 function uploadFileToDrive(data, prefix) {
   try {
     const folders = DriveApp.getFoldersByName(FOLDER_NAME);
-    const folder  = folders.hasNext()
+    const folder = folders.hasNext()
       ? folders.next()
       : DriveApp.createFolder(FOLDER_NAME);
 
-    const decoded  = Utilities.base64Decode(data.fileData);
-    const mimeType = data.fileType || 'application/octet-stream';
-    const safeName = (prefix + '_' + data.fileName).replace(/[^a-zA-Z0-9._\-]/g, '_');
-    const blob     = Utilities.newBlob(decoded, mimeType, safeName);
-    const file     = folder.createFile(blob);
-
+    const decoded = Utilities.base64Decode(data.fileData);
+    const mimeType = data.fileType || "application/octet-stream";
+    const safeName = (prefix + "_" + data.fileName).replace(
+      /[^a-zA-Z0-9._\-]/g,
+      "_",
+    );
+    const blob = Utilities.newBlob(decoded, mimeType, safeName);
+    const file = folder.createFile(blob);
     file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
     return file.getUrl();
   } catch (err) {
-    console.error('File upload error:', err.message);
-    return '';
+    console.error("File upload error:", err.message);
+    return "";
   }
 }
 
 function getNextReferenceId(sheet) {
-  const START   = 11110;
+  const START = 11110;
   const lastRow = sheet.getLastRow();
 
-  if (lastRow <= 1) return 'REF' + START;
+  if (lastRow <= 1) return "REF" + START;
 
   const lastId = sheet.getRange(lastRow, 2).getValue().toString().trim();
 
-  if (lastId.startsWith('REF')) {
-    const num = parseInt(lastId.replace('REF', ''), 10);
-    if (!isNaN(num)) return 'REF' + (num + 1);
+  if (lastId.startsWith("REF")) {
+    const num = parseInt(lastId.replace("REF", ""), 10);
+    if (!isNaN(num)) return "REF" + (num + 1);
   }
 
-  return 'REF' + (START + lastRow - 1);
+  return "REF" + (START + lastRow - 1);
 }
 
 function jsonResponse(obj) {
-  return ContentService
-    .createTextOutput(JSON.stringify(obj))
-    .setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(
+    ContentService.MimeType.JSON,
+  );
 }
 
 // ── Health check (GET) ───────────────────────────────
 function doGet() {
-  return ContentService
-    .createTextOutput('Real Amount Form API is running. Partner + Customer flows active.')
-    .setMimeType(ContentService.MimeType.TEXT);
+  return ContentService.createTextOutput(
+    "Real Amount Form API is running. Partner + Customer flows active.",
+  ).setMimeType(ContentService.MimeType.TEXT);
 }
 
 // ════════════════════════════════════════════════════
@@ -238,23 +240,23 @@ function testPartnerSubmission() {
   const fakeRequest = {
     postData: {
       contents: JSON.stringify({
-        accountType:      'Partner',
-        email:            'partner@example.com',
-        businessName:     'Test Electronics',
-        workplaceAddress: '123 Market Street, Ludhiana',
-        gstNumber:        '03ABCDE1234F1Z5',
-        contactPerson:    'Rajesh Kumar',
-        mobileNumber:     '9876543210',
-        businessType:     'Product Sale (Retail)',
-        selectedItems:    ['Air Conditioner', 'LED Tv', 'Refrigerator'],
-        brands:           'Samsung, LG',
-        referenceId:      'REF11115',
-      })
-    }
+        accountType: "Partner",
+        email: "partner@example.com",
+        businessName: "Test Electronics",
+        workplaceAddress: "123 Market Street, Ludhiana",
+        gstNumber: "03ABCDE1234F1Z5",
+        contactPerson: "Rajesh Kumar",
+        mobileNumber: "9876543210",
+        businessType: "Product Sale (Retail)",
+        selectedItems: ["Air Conditioner", "LED Tv", "Refrigerator"],
+        brands: "Samsung, LG",
+        referenceId: "REF11115",
+      }),
+    },
   };
 
   const result = doPost(fakeRequest);
-  Logger.log('Partner Response: ' + result.getContent());
+  Logger.log("Partner Response: " + result.getContent());
 }
 
 /** Test a Customer submission */
@@ -262,18 +264,18 @@ function testCustomerSubmission() {
   const fakeRequest = {
     postData: {
       contents: JSON.stringify({
-        accountType:     'Customer',
-        customerName:    'Priya Sharma',
-        customerMobile:  '9988776655',
-        customerAddress: '45 Rose Garden, Jalandhar',
-        customerService: 'Service/Repair',
-        selectedItems:   ['Ac Service/Repair', 'Mobile Repair'],
-        brands:          '',
-        referenceId:     'REF11116',
-      })
-    }
+        accountType: "Customer",
+        customerName: "Priya Sharma",
+        customerMobile: "9988776655",
+        customerAddress: "45 Rose Garden, Jalandhar",
+        customerService: "Service/Repair",
+        selectedItems: ["Ac Service/Repair", "Mobile Repair"],
+        brands: "",
+        referenceId: "REF11116",
+      }),
+    },
   };
 
   const result = doPost(fakeRequest);
-  Logger.log('Customer Response: ' + result.getContent());
+  Logger.log("Customer Response: " + result.getContent());
 }
